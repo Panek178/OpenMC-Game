@@ -15,4 +15,4 @@ Make sure you have **Rust** (`cargo`) installed on your system.
 
 Known issues
 * **Water Physics / Rendering**: Water blocks are currently basic and may display visual/physics glitches.
-* **Mobs & Entities**: Entity system is currently under testing (mobs lack proper textures or AI).
+* **Mobs & Entities**: Entity system is currently under testing (mobs lack proper textures).
