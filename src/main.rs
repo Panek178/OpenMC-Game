@@ -327,7 +327,7 @@ fn save_player_data_to_level(world_dir: &str, player_pos: Vec3, yaw: f32, pitch:
         SizeOnDisk: 0,
         LastPlayed: std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis() as i64,
         Player: player_data,
-        LevelName: "OpenCraftWorld".to_string(),
+        LevelName: "OpenMCWorld".to_string(),
         version: 19132,
         raining: 0,
         rainTime: 0,
@@ -747,7 +747,7 @@ fn prepare_world_structure(world_dir: &str) {
         nbt.push(0x08);
         nbt.write_all(&9u16.to_be_bytes()).unwrap();
         nbt.write_all(b"LevelName").unwrap();
-        let world_name_bytes = b"OpenCraftWorld";
+        let world_name_bytes = b"OpenMCWorld";
         nbt.write_all(&(world_name_bytes.len() as u16).to_be_bytes()).unwrap();
         nbt.write_all(world_name_bytes).unwrap();
 
@@ -940,7 +940,7 @@ fn main() {
 
     let event_loop = EventLoop::new().unwrap();
     let window_builder = WindowBuilder::new()
-    .with_title("OpenCraft")
+    .with_title("OpenMC")
     .with_inner_size(winit::dpi::LogicalSize::new(800, 600));
 
     let template = ConfigTemplateBuilder::new();
@@ -995,7 +995,7 @@ fn main() {
         tex
     };
 
-    let world_dir = "saves/OpenCraftWorld";
+    let world_dir = "saves/OpenMCWorld";
     prepare_world_structure(world_dir);
 
     let (initial_pos, initial_yaw, initial_pitch) = load_player_spawn_from_level(world_dir);

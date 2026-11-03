@@ -1,5 +1,5 @@
-// menu.rs - menu główne OpenCraft
-// - animowane logo 3D "OpenCraft" złożone z bloków cobblestone (spadają i układają się, potem lekko się kołysze)
+// menu.rs - menu główne OpenMC
+// - animowane logo 3D "OpenMC" złożone z bloków cobblestone (spadają i układają się, potem lekko się kołysze)
 // - przyciski w stylu Minecrafta (obramowanie, fazowanie, podświetlenie po najechaniu)
 // - wbudowana czcionka bitmapowa 5x7 (nie wymaga żadnych plików)
 // - własny shader i VAO/VBO, więc main.rs nie musi nic przygotowywać
@@ -10,7 +10,7 @@ use glow::HasContext;
 use std::time::Instant;
 
 const GUI_H: f32 = 240.0; // wirtualna wysokość GUI (szerokość wynika z proporcji okna)
-const LOGO_W: f32 = 53.0; // szerokość logo w blokach (9 liter * 6 - 1)
+const LOGO_W: f32 = 35.0; // szerokość logo w blokach (9 liter * 6 - 1)
 const COBBLE_TILE: i32 = 16; // kafelek cobblestone w terrain.png
 const DIRT_TILE: i32 = 2; // kafelek ziemi w terrain.png
 
@@ -66,8 +66,8 @@ struct Glyph {
     rows: &'static [&'static str],
 }
 
-// Litery logo "OpenCraft" (5 kolumn szerokości, kolejne wiersze od góry; 'top' = wiersz startowy)
-const LOGO_GLYPHS: [Glyph; 9] = [
+// Litery logo "OpenMC" (5 kolumn szerokości, kolejne wiersze od góry; 'top' = wiersz startowy)
+const LOGO_GLYPHS: [Glyph; 6] = [
     // O
     Glyph { top: 0, rows: &[".###.", "#...#", "#...#", "#...#", "#...#", ".###."] },
 // p
@@ -76,16 +76,10 @@ Glyph { top: 1, rows: &["####.", "#...#", "#...#", "#...#", "####.", "#....", "#
 Glyph { top: 1, rows: &[".###.", "#...#", "#####", "#....", ".####"] },
 // n
 Glyph { top: 1, rows: &["####.", "#...#", "#...#", "#...#", "#...#"] },
+// M
+Glyph { top: 0, rows: &["#...#", "##.##", "#.#.#", "#...#", "#...#", "#...#"] },
 // C
 Glyph { top: 0, rows: &[".####", "#....", "#....", "#....", "#....", ".####"] },
-// r
-Glyph { top: 1, rows: &["#.###", "##...", "#....", "#....", "#...."] },
-// a
-Glyph { top: 1, rows: &[".###.", "....#", ".####", "#...#", ".####"] },
-// f
-Glyph { top: 0, rows: &[".###.", "#....", "####.", "#....", "#....", "#...."] },
-// t
-Glyph { top: 0, rows: &[".#...", ".#...", "####.", ".#...", ".#...", ".###."] },
 ];
 
 // Ściany sześcianu: 4 rogi (lewy-dół, prawy-dół, prawy-góra, lewy-góra patrząc z zewnątrz) + normalna
@@ -504,7 +498,7 @@ if (vUV.x < 0.0) {
                 }
                 match self.state {
                     GameState::MainMenu => {
-                        draw_text_shadow(out, 3.0, 3.0, "OpenCraft Beta 1.7.3", 1.0, [0.85, 0.85, 0.85, 1.0]);
+                        draw_text_shadow(out, 3.0, 3.0, "OpenMC Beta 1.7.3", 1.0, [0.85, 0.85, 0.85, 1.0]);
                         let s = "By Panek";
                         draw_text_shadow(out, gui_w - text_width(s, 1.0) - 4.0, 3.0, s, 1.0, [0.85, 0.85, 0.85, 1.0]);
                     }
